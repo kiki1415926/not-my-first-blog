@@ -8,13 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 25 Sep 2020 21:13:14 -0500</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Reasons for infection of COVID-19 in Toronto</title>
-      <link>/2020/09/25/reasons-for-infection-of-covid-19-in-toronto/</link>
+      <title>Cause of infection of COVID-19 in Toronto</title>
+      <link>/2020/09/25/cause-of-infection-of-covid-19-in-toronto/</link>
       <pubDate>Fri, 25 Sep 2020 21:13:14 -0500</pubDate>
       
-      <guid>/2020/09/25/reasons-for-infection-of-covid-19-in-toronto/</guid>
-      <description>Data discussion This data set contains all confirmed and probable cases reported to Toronto Public Health from January 2020 since the first case was reported. It contains the age and gender of infected person, their neighbourhood, the source of their infection. We will discuss these data and conclude what made people more likely to get infection of COVID-19.
- Graph and Graph discussion library(&amp;quot;tidyverse&amp;quot;) ## ── Attaching packages ──────────────────────────────────────── tidyverse 1.</description>
+      <guid>/2020/09/25/cause-of-infection-of-covid-19-in-toronto/</guid>
+      <description>Abstract Nowadays, people are generally concerned about COVID-19. In this paper, I used “COVID-19 Cases in Toronto” data set from OPENDATA Toronto to study the characteristics of confirmed and probable infected people and came to the conclusion that who is more likely to get infection of COVID-19. Thus, we can use scientific methods to reduce the chance of getting infection of COVID-19.
+ Introduction At the moment, COVID-19 has a great impact on people all over the world.</description>
     </item>
     
     <item>

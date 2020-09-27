@@ -1,5 +1,5 @@
 ---
-title: "Reasons for infection of COVID-19 in Toronto"
+title: "Cause of infection of COVID-19 in Toronto"
 author: "Runqi Bi"
 date: 2020-09-25T21:13:14-05:00
 categories: ["R"]
@@ -21,9 +21,14 @@ datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'
 data <- filter(datastore_resources, row_number()==1) %>% get_resource()
 data
 ```
+# Abstract
+Nowadays, people are generally concerned about COVID-19. In this paper, I used "COVID-19 Cases in Toronto" data set from OPENDATA Toronto to study the characteristics of confirmed and probable infected people and came to the conclusion that who is more likely to get infection of COVID-19. Thus, we can use scientific methods to reduce the chance of getting infection of COVID-19.
+
+# Introduction
+At the moment, COVID-19 has a great impact on people all over the world. As a result, schools are closed, employees work from home, and many people fall ill or even die. Therefore, I want to know what might directly or indirectly cause these people to get COVID-19. Some people think old people are more likely to get COVID-19, because their immunity is weak. Is this true? Through data analysis on this data set, I found that most people who are confirmed and probable infected are not old people, but are young and middle-aged. Also, those who are in close contact with a confirmed or probable COVID-19 infestors have extremely high probability to get COVID-19 as well. Futhermore, the crowded neighbourhood is also a risky area for getting COVID-19. One of the weakness of this data set is that it is missing some important inforamtions, like the medical history of those people, having a habit of wearing a mask or not. These information is important as well to explore the cause of infection of COVID-19.
+
 
 # Data discussion
-
 This data set contains all confirmed and probable cases reported to Toronto Public Health from January 2020 since the first case was reported. It contains the age and gender of infected person, their neighbourhood, the source of their infection. We will discuss these data and conclude what made people more likely to get infection of COVID-19.
 
 # Graph and Graph discussion
@@ -54,9 +59,22 @@ data %>%
   geom_bar(stat = "identity")
 ```
 
+The graph of neighbourhood summarized all confirmed and probable cases' neighbourhood whose count are over 300, ignore those NaN data, we can see that the densely populated neighbourhood are more likely to have COVID-19 cases, for example, York University Heights.
 
-
-
+# References
+- Yihui Xie (2020). blogdown: Create Blogs and Websites with R
+  Markdown. R package version 0.20.
+- Wickham et al., (2019). Welcome to the tidyverse. Journal of
+  Open Source Software, 4(43), 1686,
+  https://doi.org/10.21105/joss.01686
+- Sharla Gelfand (2020). opendatatoronto: Access the City of
+  Toronto Open Data Portal.
+  https://sharlagelfand.github.io/opendatatoronto/,
+  https://github.com/sharlagelfand/opendatatoronto/.
+- Hadley Wickham, Romain François, Lionel Henry and Kirill
+  Müller (2020). dplyr: A Grammar of Data Manipulation.
+  https://dplyr.tidyverse.org,
+  https://github.com/tidyverse/dplyr.
 
 
 
