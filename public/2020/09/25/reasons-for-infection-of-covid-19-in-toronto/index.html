@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.75.1" />
+
+
+<title>Reasons for infection of COVID-19 in Toronto - A Hugo website</title>
+<meta property="og:title" content="Reasons for infection of COVID-19 in Toronto - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Reasons for infection of COVID-19 in Toronto</h1>
+
+    
+    <span class="article-date">2020-09-25</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="data-discussion" class="section level1">
+<h1>Data discussion</h1>
+<p>This data set contains all confirmed and probable cases reported to Toronto Public Health from January 2020 since the first case was reported. It contains the age and gender of infected person, their neighbourhood, the source of their infection. We will discuss these data and conclude what made people more likely to get infection of COVID-19.</p>
+</div>
+<div id="graph-and-graph-discussion" class="section level1">
+<h1>Graph and Graph discussion</h1>
+<pre class="r"><code>library(&quot;tidyverse&quot;)
+## ── Attaching packages ──────────────────────────────────────── tidyverse 1.3.0 ──
+## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.3     ✓ stringr 1.4.0
+## ✓ tidyr   1.1.2     ✓ forcats 0.5.0
+## ✓ readr   1.3.1
+## ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+names(data)[names(data) == &quot;Age Group&quot;] &lt;- &quot;age&quot;
+names(data)[names(data) == &quot;Client Gender&quot;] &lt;- &quot;gender&quot;
+names(data)[names(data) == &quot;Source of Infection&quot;] &lt;- &quot;source&quot;
+names(data)[names(data) == &quot;Neighbourhood Name&quot;] &lt;- &quot;neighbourhood&quot;
+data %&gt;% ggplot(aes(x=age)) + geom_bar() + coord_flip() + ggtitle(&quot;Age of Infestor&quot;)</code></pre>
+<p><img src="/post/2020-09-25-r-rmarkdown_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+From the graph “Age of Infestor”, we can see the graph is slighly left-skewed, which means older people are less likely to be infected. Most infestors’ age are between 20~59.</p>
+<pre class="r"><code>data %&gt;% ggplot(aes(x=gender)) + geom_bar() + coord_flip() + ggtitle(&quot;Gender of Infestor&quot;)</code></pre>
+<p><img src="/post/2020-09-25-r-rmarkdown_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+From the graph of “Gender of Infestor”, we can see female infestors are sightly more than male infestors, but we can consider they are almost the same, so gender is not a key effect to infect COVID-19.</p>
+<pre class="r"><code>data %&gt;% ggplot(aes(x=source)) + geom_bar() + coord_flip() + ggtitle(&quot;Souce of Infection&quot;)</code></pre>
+<p><img src="/post/2020-09-25-r-rmarkdown_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+Through the graph of “Souce of Infection”, we can see there are two groups significantly higher than other groups. They are “Close contact” and “NA”. Therefore, we can conclude an obvious effector to infect COVID-19 is be in close contact with a confirmed or probable COVID-19 infestor.</p>
+<pre class="r"><code>data %&gt;% 
+  group_by(neighbourhood) %&gt;%
+  count %&gt;%
+  filter(n &gt; 300) %&gt;%
+  ggplot(aes(y = neighbourhood, x = n)) + 
+  geom_bar(stat = &quot;identity&quot;)</code></pre>
+<p><img src="/post/2020-09-25-r-rmarkdown_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

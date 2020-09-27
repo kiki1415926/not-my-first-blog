@@ -1,0 +1,62 @@
+---
+title: "Reasons for infection of COVID-19 in Toronto"
+author: "Runqi Bi"
+date: 2020-09-25T21:13:14-05:00
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+library(opendatatoronto)
+library(dplyr)
+# get package
+package <- show_package("64b54586-6180-4485-83eb-81e8fae3b8fe")
+package
+# get all resources for this package
+resources <- list_package_resources("64b54586-6180-4485-83eb-81e8fae3b8fe")
+# identify datastore resources; by default, Toronto Open Data sets datastore resource format to CSV for non-geospatial and GeoJSON for geospatial resources
+datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'))
+# load the first datastore resource as a sample
+data <- filter(datastore_resources, row_number()==1) %>% get_resource()
+data
+```
+
+# Data discussion
+
+This data set contains all confirmed and probable cases reported to Toronto Public Health from January 2020 since the first case was reported. It contains the age and gender of infected person, their neighbourhood, the source of their infection. We will discuss these data and conclude what made people more likely to get infection of COVID-19.
+
+# Graph and Graph discussion
+
+```{r}
+library("tidyverse")
+names(data)[names(data) == "Age Group"] <- "age"
+names(data)[names(data) == "Client Gender"] <- "gender"
+names(data)[names(data) == "Source of Infection"] <- "source"
+names(data)[names(data) == "Neighbourhood Name"] <- "neighbourhood"
+data %>% ggplot(aes(x=age)) + geom_bar() + coord_flip() + ggtitle("Age of Infestor")
+```
+From the graph "Age of Infestor", we can see the graph is slighly left-skewed, which means older people are less likely to be infected. Most infestors' age are between 20~59. 
+```{r}
+data %>% ggplot(aes(x=gender)) + geom_bar() + coord_flip() + ggtitle("Gender of Infestor")
+```
+From the graph of "Gender of Infestor", we can see female infestors are sightly more than male infestors, but we can consider they are almost the same, so gender is not a key effect to infect COVID-19.
+```{r}
+data %>% ggplot(aes(x=source)) + geom_bar() + coord_flip() + ggtitle("Souce of Infection")
+```
+Through the graph of "Souce of Infection", we can see there are two groups significantly higher than other groups. They are "Close contact" and "NA". Therefore, we can conclude an obvious effector to infect COVID-19 is be in close contact with a confirmed or probable COVID-19 infestor. 
+```{r}
+data %>% 
+  group_by(neighbourhood) %>%
+  count %>%
+  filter(n > 300) %>%
+  ggplot(aes(y = neighbourhood, x = n)) + 
+  geom_bar(stat = "identity")
+```
+
+
+
+
+
+
+

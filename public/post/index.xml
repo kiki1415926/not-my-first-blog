@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on A Hugo website</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on A Hugo website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Sep 2020 21:13:14 -0500</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reasons for infection of COVID-19 in Toronto</title>
+      <link>/2020/09/25/reasons-for-infection-of-covid-19-in-toronto/</link>
+      <pubDate>Fri, 25 Sep 2020 21:13:14 -0500</pubDate>
+      
+      <guid>/2020/09/25/reasons-for-infection-of-covid-19-in-toronto/</guid>
+      <description>Data discussion This data set contains all confirmed and probable cases reported to Toronto Public Health from January 2020 since the first case was reported. It contains the age and gender of infected person, their neighbourhood, the source of their infection. We will discuss these data and conclude what made people more likely to get infection of COVID-19.
+ Graph and Graph discussion library(&amp;quot;tidyverse&amp;quot;) ## ── Attaching packages ──────────────────────────────────────── tidyverse 1.</description>
+    </item>
+    
+  </channel>
+</rss>
